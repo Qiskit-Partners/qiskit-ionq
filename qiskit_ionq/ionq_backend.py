@@ -39,7 +39,7 @@ from qiskit.providers.models.backendconfiguration import BackendConfiguration
 from qiskit.providers.models.backendstatus import BackendStatus
 from qiskit.providers import Options
 
-from . import exceptions, ionq_client, ionq_job, ionq_equivalence_library
+from . import exceptions, ionq_client, ionq_job
 from .helpers import GATESET_MAP, get_n_qubits
 
 if TYPE_CHECKING:
@@ -140,8 +140,6 @@ class IonQBackend(Backend):
     _client = None
 
     def __init__(self, *args, **kwargs) -> None:
-        # Add IonQ equivalences
-        ionq_equivalence_library.add_equivalences()
         super().__init__(*args, **kwargs)
 
     @classmethod
